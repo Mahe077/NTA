@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:nta/core/constants.dart';
 import 'package:nta/pages/new_or_edit_page.dart';
 import 'package:nta/widgets/note_add.dart';
+import 'package:nta/widgets/note_button.dart';
 import 'package:nta/widgets/note_icon_button.dart';
 import 'package:nta/widgets/notes_grid.dart';
 import 'package:nta/widgets/notes_list.dart';
@@ -35,8 +36,12 @@ class _MainPageState extends State<MainPage> {
       ),
       floatingActionButton: NoteAdd(
         onPressed: () {
-          Navigator.push(context,
-              MaterialPageRoute(builder: (context) => NewOrEditPage()));
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => const NewOrEditPage(
+                        isNewNote: true,
+                      )));
         },
       ),
       body: Padding(
@@ -49,22 +54,15 @@ class _MainPageState extends State<MainPage> {
               padding: const EdgeInsets.symmetric(vertical: 8.0),
               child: Row(
                 children: [
-                  IconButton(
+                  NoteButton(
+                    icon:
+                        isDesceding ? Icons.arrow_downward : Icons.arrow_upward,
                     onPressed: () {
                       setState(() {
                         isDesceding = !isDesceding;
                       });
                     },
-                    icon: Icon(isDesceding
-                        ? Icons.arrow_downward
-                        : Icons.arrow_upward),
-                    padding: EdgeInsets.zero,
-                    visualDensity: VisualDensity.compact,
-                    constraints: const BoxConstraints(),
-                    style: IconButton.styleFrom(
-                        tapTargetSize: MaterialTapTargetSize.shrinkWrap),
-                    iconSize: 18,
-                    color: grey700,
+                    size: 18,
                   ),
                   const SizedBox(
                     width: 16,
@@ -106,20 +104,14 @@ class _MainPageState extends State<MainPage> {
                         });
                       }),
                   const Spacer(),
-                  IconButton(
+                  NoteButton(
+                    icon: isGrid ? Icons.grid_view : Icons.menu,
                     onPressed: () {
                       setState(() {
                         isGrid = !isGrid;
                       });
                     },
-                    icon: Icon(isGrid ? Icons.grid_view : Icons.menu),
-                    padding: EdgeInsets.zero,
-                    visualDensity: VisualDensity.compact,
-                    constraints: const BoxConstraints(),
-                    style: IconButton.styleFrom(
-                        tapTargetSize: MaterialTapTargetSize.shrinkWrap),
-                    iconSize: 18,
-                    color: grey700,
+                    size: 18,
                   )
                 ],
               ),
