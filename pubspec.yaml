@@ -19,6 +19,19 @@ dev_dependencies:
 
 flutter: 
   uses-material-design: true
+  fonts:
+    - family: Poppins
+      fonts:
+        - asset: assets/fonts/poppins/Poppins-Regular.ttf
+        - asset: assets/fonts/poppins/Poppins-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/poppins/Poppins-Italic.ttf
+          style: italic
+    - family: Fredoka
+      fonts:
+        - asset: assets/fonts/fredoka/Fredoka-Regular.ttf
+        - asset: assets/fonts/fredoka/Fredoka-Bold.ttf
+          weight: 700
 
   
   
