@@ -17,9 +17,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
 
-      - name: Fix flutter SDK folder permission
-        run: git config --global --add safe.directory /tmp/flutter/--
-
       - name: Clone Flutter repository with master channel
         uses: subosito/flutter-action@v2
         with:
