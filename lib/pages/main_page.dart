@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:nta/core/constants.dart';
+import 'package:nta/pages/new_or_edit_page.dart';
 import 'package:nta/widgets/note_add.dart';
+import 'package:nta/widgets/note_icon_button.dart';
 import 'package:nta/widgets/notes_grid.dart';
 import 'package:nta/widgets/notes_list.dart';
 import 'package:nta/widgets/search_field.dart';
@@ -25,20 +27,18 @@ class _MainPageState extends State<MainPage> {
       appBar: AppBar(
         title: const Text("NTA"),
         actions: [
-          IconButton(
+          NoteIconButton(
+            icon: Icons.logout,
             onPressed: () {},
-            icon: const Icon(
-              Icons.logout,
-            ),
-            style: IconButton.styleFrom(
-                backgroundColor: primary,
-                foregroundColor: white,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12))),
           )
         ],
       ),
-      floatingActionButton: const NoteAdd(),
+      floatingActionButton: NoteAdd(
+        onPressed: () {
+          Navigator.push(context,
+              MaterialPageRoute(builder: (context) => NewOrEditPage()));
+        },
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
