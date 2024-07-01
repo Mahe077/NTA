@@ -74,9 +74,10 @@ class _NewOrEditPage extends State<NewOrEditPage> {
         padding: const EdgeInsets.all(8.0),
         child: Column(
           children: [
-            const TextField(
-              style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-              decoration: InputDecoration(
+            TextField(
+              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+              canRequestFocus: !readOnly,
+              decoration: const InputDecoration(
                   hintText: "Add title",
                   border: InputBorder.none,
                   hintStyle: TextStyle(color: grey300)),
@@ -128,7 +129,7 @@ class _NewOrEditPage extends State<NewOrEditPage> {
                         style: TextStyle(
                             fontWeight: FontWeight.bold, color: grey500),
                       ),
-                      SizedBox(
+                      const SizedBox(
                         width: 8,
                       ),
                       NoteButton(
