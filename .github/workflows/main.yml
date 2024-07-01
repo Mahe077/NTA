@@ -12,7 +12,7 @@ on:
 
 jobs:
   build-and-deploy:
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -39,3 +39,18 @@ jobs:
 
       - name: Build Android release
         run: flutter build appbundle
+
+      - name: Upload Android build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: android-app-release
+          path: build/app/outputs/bundle/release/*.aab
+
+      - name: Build iOS release
+        run: flutter build ipa --release
+
+      - name: Upload iOS build artifacts
+        uses: actions/upload-artifact@v3
+        with:
+          name: ios-app-release
+          path: build/ios/ipa/*.ipa
