@@ -46,6 +46,12 @@ jobs:
           name: android-app-release
           path: build/app/outputs/bundle/release/*.aab
 
+      - name: Install CocoaPods dependencies
+        run: |
+          cd ios
+          pod install
+        working-directory: ./ios
+
       - name: Build iOS release
         run: flutter build ipa --release
 
